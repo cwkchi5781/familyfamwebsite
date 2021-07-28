@@ -1,0 +1,48 @@
+   {% extends "layout.html" %}
+{% block content %}
+
+   {% if message %}
+   <p class="alert alert-danger">{{ message }}</p>
+   {% endif %}
+
+<div class="container">
+
+   <h2> All Events </h2>
+   <h3>For {{user}}</h3>
+
+   <ul class="events">
+       {% if list != "" %}
+           {% for event in list %}
+
+               <li>
+                   <div class="date">
+
+                       <div class="day">{{event[4]}}</div>
+                       <div class="starttime">Start: {{event[5]}}</div>
+                       <div class="endtime">End: {{ event[6] }}</div>
+
+                   </div>
+                   <div class="details">
+
+                       <span class="host">
+                           {{event[1]}}
+                           <a href="#">
+                               {{event[2]}}
+                           </a>
+                           {% if event[6] != "Canceled" %}
+                           <span class="badge badge-success">{{event[7]}}</span>
+
+                           {% else %}
+                           <span class="badge badge-warning">{{event[7]}}</span>
+                           {% endif %}
+                       </span>
+                       <span class="description overflow-auto"> {{event[3]}}</span><br />
+                   </div>
+
+               </li>
+
+           {% endfor %}
+       {% endif %}
+   </ul>
+    </div>
+{% endblock content %}

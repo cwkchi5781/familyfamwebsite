@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <h2> Events I'm Hosting: </h2>
+    
+    {% if list != "" %}
+    <ul class="events">
+
+        {% for event in list %}
+
+        <li>
+            <div class="date">
+                <div class="day">{{event[4]}}</div>
+                <div class="starttime">{{event[5]}}</div>
+                <div class="endtime">{{event[6]}}</div>
+            </div>
+            <div class="details">
+
+                <span class="host">
+                    {{event[1]}}
+                    <a href="#">
+                        {{event[2]}}
+                    </a>
+                    {% if event[5] != "Canceled" %}
+                    <span class="badge badge-success">{{event[7]}}</span>
+
+                    {% else %}
+                    <span class="badge badge-warning">{{event[7]}}</span>
+                    {% endif %}
+                </span>
+                <span class="description overflow-auto"> {{event[3]}}</span><br />
+
+                <div>
+                    <a href="/update/{{event[0]}}" class="btn btn-info">Edit</a>
+                    <a href="/cancel/{{event[0]}}" class="btn btn-danger">Cancel</a>
+                </div>
+
+
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>You haven't posted an event yet!</p>
+    {% endif %}
+
+ 
+</div>
+{% endblock content %}

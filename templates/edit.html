@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <h2> Edit an Event: </h2>
+
+    <div class="container text-left">
+        <div class="inputbox-add-event" id="add-event">
+            <form method="POST" action="/update/{{event[0]}}">
+                <div class="form-group">
+
+                    <input class="form-control item" name="title" placeholder="Title" required value="{{event[1]}}">
+                    <input class="form-control item" name="description" placeholder="Describe: e.g. Emily's Birthday Party" required value="{{event[3]}}" >
+                    <input type="date" class="form-control item" name="day" placeholder="Date: e.g. Jan. 20" required value="{{event[4]}}">
+                    {% if (event[5]|string)|length == 7 %}
+                    <input type="time" class="form-control item" name="starttime" placeholder="Start Time: e.g. 5:00 pm" required value="0{{event[5]}}">
+                    {% else %}
+                    <input type="time" class="form-control item" name="starttime" placeholder="Start Time: e.g. 5:00 pm" required value="{{event[5]}}">
+                    {% endif %}
+                    {% if (event[6]|string)|length == 7 %}
+                    <input type="time" class="form-control item" name="endtime" placeholder="End Time: e.g. 6:00 pm" required value="0{{event[6]}}">
+                    {% else %}
+                    <input type="time" class="form-control item" name="endtime" placeholder="End Time: e.g. 6:00 pm" required value="{{event[6]}}">
+                    {% endif %}
+                    <select class="form-control item" name="status" required>
+                        <option selected hidden>{{event[7]}}</option>
+                        <option value="Still on">Still on</option>
+                        <option value="Canceled">Canceled</option>
+                    </select>
+                    <button class="btn btn-primary" id="event-submit" type="submit">Submit </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br>
+
+
+</div>
+{% endblock content %}

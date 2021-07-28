@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="welcomePage">
+        <div>
+            <h1 class="logoColor"> FriendlyFam</h1>
+            <p style="font-size: 28px; font-weight: bold"> An app for family events</p>
+            <p style="font-size: 20px; color: grey"> Post an event or attend your friends family events! </p>
+        </div>
+        <div class="registration-form">
+            <form id="myform" action="/signup" method="post" onsubmit="return validation()">
+                <h3 class="text-center">Create your account</h3>
+
+                {% if message %}
+                <p class="alert alert-danger">{{ message }}</p>
+                {% endif %}
+
+                <div class="form-group">
+                    <input class="form-control item" type="text" name="username" id="username" placeholder="Username" onchange="validation()" value={{username}}>
+                    <span id="error_username"> </span>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control item" type="password" name="password" id="password" placeholder="Password" onchange="validation()">
+                    <span id="error_password"> </span>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control item" type="password" name="confirm-password" id="confirm_password" placeholder="confirm Password" onkeydown="validation()">
+                    <span id="error_confirm"> </span>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block create-account" type="submit">Create Account</button>
+                </div>
+                <hr />
+                <p class="text-center">Do you have an account already? <br /><a href="/"> Login</a></p>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
