@@ -180,8 +180,9 @@ def cancel(eventid):
     if "user" in session:
         name = session["user"]
         print("got inside user")
-        sql = "UPDATE posts SET status='Canceled' WHERE id=%s"
-        vars = (eventid,)
+        cursor.fetchall()
+        sql = "UPDATE posts SET status='Canceled' WHERE id=%s AND host=%s"
+        vars = (eventid, name)
         cursor.execute(sql, vars)
         print("hi hello im trying")
         db.commit()
