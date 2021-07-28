@@ -95,7 +95,7 @@ def index():
         #session["user"] = name
         password = request.form["password"]
         if (password == ""):
-            return render_template("index.html", messag="No Password")
+            return render_template("index.html", message="No Password")
         if (len(password) > 50):
             return render_template("index.html", message="Password too long. Max length is 50 characters")
 
