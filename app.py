@@ -13,7 +13,7 @@ db = mysql.connector.connect(
     database="heroku_008b3dac9b6fd1b"
 )
 #mysql://b8601831567355:40a53098@us-cdbr-east-04.cleardb.com/heroku_008b3dac9b6fd1b?reconnect=true
-
+#mysql://b8601831567355:40a53098@us-cdbr-east-04.cleardb.com/heroku_008b3dac9b6fd1b?reconnect=true
 
 cursor = db.cursor()
 
