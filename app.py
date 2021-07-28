@@ -124,8 +124,8 @@ def index():
     elif "user" in session:
         print("already logged in")
         return redirect(url_for("home", message="Already logged in"))
-
-    return render_template("index.html")
+    else:
+        return render_template("index.html")
 #this is also the login screen
 
 
