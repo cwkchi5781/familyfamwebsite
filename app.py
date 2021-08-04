@@ -203,6 +203,8 @@ def add():
                 print("invalid times")
                 return redirect(url_for("add", message="Invalid Time"))
 
+            cursor.fetchall()
+
             sql = "INSERT INTO posts(title, host, description, day, starttime, endtime, status) VALUES (%s, %s, %s, %s,%s, %s, %s)"
             vars = (title, name, description, day, starttime, endtime, "Normal")
             cursor.execute(sql, vars)
