@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, session, url_for
-import gunicorn, mysql.connector
+import gunicorn
+import mysql.connector
 from datetime import datetime
 
 app = Flask(__name__)
@@ -21,63 +22,6 @@ cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT PRIMARY KEY AUTO_INCREM
 
 cursor.execute("CREATE TABLE IF NOT EXISTS posts (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(50) ,host VARCHAR(50), description VARCHAR(255), day DATE, starttime TIME, endtime TIME, status VARCHAR(10))")
 db.commit()
-
-#cursor.execute("INSERT INTO posts(host, description, day, starttime, endtime, status) VALUES ()")
-
-cursor.execute("SELECT starttime FROM posts")
-print(cursor.fetchall())
-
-
-cursor.execute("SHOW DATABASES")
-print(cursor.fetchall())
-
-#cursor.execute("DELETE FROM users WHERE username='name'")
-#db.commit()
-#print("hi")
-
-"""
-values=("one", "two")
-sql=("INSERT INTO users(username, password) VALUES (%s, %s)")
-cursor.execute(sql, values)
-db.commit()
-"""
-
-cursor.execute("SELECT * FROM users WHERE username='name'")
-none = str(cursor.fetchone())
-#print("should be empty")
-print(none)
-
-print("before")
-cursor.execute("SELECT * FROM `BIGFAMILYPROJECT`.`users` WHERE 'username'='name'")
-cursor.execute("SELECT * FROM users WHERE username='name'")
-output = cursor.fetchall()
-
-if output == []:
-    cursor.execute("INSERT INTO users(username, password) VALUES ('name', 'password')")
-    db.commit()
-    #print("username not taken")
-else:
-    #print("username already taken")
-    pass
-
-
-#print(str(cursor.fetchone() == none))
-#print("after")
-cursor.execute("SELECT * FROM users WHERE username='name'")
-print(cursor.fetchall())
-#print("hello")
-
-
-"""
-class users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
-    username = db.Column("name", db.String(100))
-    password = db.Column("password", db.String(100))
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-"""
 
 @app.route('/', methods=["POST", "GET"])
 def index():
