@@ -49,6 +49,10 @@ def index():
 
         shouldbe = cursor.fetchone()
 
+        if shouldbe == None:
+            return render_template("index.html", message="Account Doesn't Exist, Please Create a NEw ONe")
+
+
         if str(password) == shouldbe[2]:
             session["user"] = name
             """
