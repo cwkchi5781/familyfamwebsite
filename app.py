@@ -80,7 +80,7 @@ def login():
 
 @app.route('/logout', methods=["POST", "GET"])
 def logout():
-    session.pop("user", none)
+    session.pop("user", None)
     return redirect(url_for("index"))
     #don't forget to add logout alert
 
