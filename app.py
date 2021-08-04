@@ -49,7 +49,7 @@ def index():
 
         shouldbe = cursor.fetchone()
 
-        if shouldbe == None:
+        if shouldbe is None:
             return render_template("index.html", message="Account Doesn't Exist, Please Create a NEw ONe")
 
 
