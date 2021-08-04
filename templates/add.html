@@ -3,6 +3,9 @@
 
 <div class="container">
     <h2> Post an Event: </h2>
+       {% if message %}
+   <p class="alert alert-danger alert-dismissible">{{ message }}</p>
+   {% endif %}
 
     <div class="container text-left">
         <div class="inputbox-add-event" id="add-event">
