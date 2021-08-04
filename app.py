@@ -88,8 +88,9 @@ def logout():
 def home():
     if "user" in session:
         name = session["user"]
-        sql = "SELECT * FROM posts ORDER BY day"
         cursor.fetchall()
+
+        sql = "SELECT * FROM posts ORDER BY day"
 
         cursor.execute(sql)
 
